@@ -4,19 +4,13 @@
 
 
 double sin_pr(double x, double fel, int ind) {
-	if (x == 0) return 0;
-	else {
-		fel *= (-1) * x * x / (2 * ind * (2 * ind + 1));
-		return fel;
-	}
+	fel *= (-1) * x * x / (2 * ind * (2 * ind + 1));
+	return fel;
 }
 
 double cos_pr(double x, double fel, int ind) {
-	if (x == 0) return 1;
-	else {
-		fel *= (-1) * x * x / (2 * ind * (2 * ind - 1));
-		return fel;
-	}
+	fel *= (-1) * x * x / (2 * ind * (2 * ind - 1));
+	return fel;
 }
 
 double log_pr(double x, double fel, int ind) {
