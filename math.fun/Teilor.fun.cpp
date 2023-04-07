@@ -1,4 +1,4 @@
-﻿#include "stdio.h"
+#include "stdio.h"
 #include "math.h"
 #include "locale.h"
 
@@ -62,6 +62,14 @@ double summ(double suma, double(*fun)(double, double, int), double x, double fel
 	return suma;
 }
 
+double summ_ob_cos_sin(double suma, double(*fun)(double, double, int), double x, double fel) {
+	suma += fel;
+	for (int i = 50; i > -1; i--) {
+		fel = fun(x, fel, i);
+		suma += fel;
+	}
+	return suma;
+}
 
 double summ_ob(double suma, double(*fun)(double, double, int), double x, double fel) {
 	suma += fel;
@@ -93,15 +101,13 @@ int main() {
 	printf("sin(x) = %.20lf\n", sinp);
 	//
 	lel = 1;
-	for (int j = 1; j < 202; j++) {
+	for (int j = 1; j < 102; j++) {
 		lel = lel * x / j;
 	}
-	sino = summ_ob(sino, sin_ob, x, lel);
+	sino = summ_ob_cos_sin(sino, sin_ob, x, lel);
 	printf("Обратный sin(x) = %.20lf\n", sino);
 	//
-	printf("канонный sin(x) = %.20lf\n", sin_can);
-	minuss = labs(sinp - sin_can);
-	printf("Разница Эпсилон: %.20lf\n\n", minuss);
+	printf("канонный sin(x) = %.20lf\n\n", sin_can);
 
 	//cosx
 	fel = 1;
@@ -110,15 +116,13 @@ int main() {
 	printf("cos(x) = %.20lf\n", cosp);
 	//
 	lel = 1;
-	for (int j = 1; j < 201; j++) {
+	for (int j = 1; j < 101; j++) {
 		lel *= x / j;
 	}
-	coso = summ_ob(coso, cos_ob, x, lel);
+	coso = summ_ob_cos_sin(coso, cos_ob, x, lel);
 	printf("Обратный cos(x) = %.20lf\n", coso);
 	//
-	printf("канонный cos(x) = %.20lf\n", cos_can);
-	minuss = labs(cosp - cos_can);
-	printf("Разница Эпсилон: %.20lf\n\n", minuss);
+	printf("канонный cos(x) = %.20lf\n\n", cos_can);
 
 	//ln(1+x)
 	if ((x > -1) && (x <= 1)) {
@@ -131,9 +135,7 @@ int main() {
 		lno = summ_ob(lno, ln_ob, x, lel);
 		printf("Обратная ln(1+x): %.20lf\n", lno);
 		//
-		printf("канонный ln(x+1) = %.20lf\n", ln_can);
-		minuss = labs(lnp - ln_can);
-		printf("Разница Эпсилон: %.20lf\n\n", minuss);
+		printf("канонный ln(x+1) = %.20lf\n\n", ln_can);
 	}
 	else
 		printf("Недопустимые значения для ln(1+x)\n\n");
@@ -151,9 +153,8 @@ int main() {
 	expo = summ_ob(expo, exp_ob, x, lel);
 	printf("Обратная exp^x: %.20lf\n", expo);
 	//
-	printf("канонная exp^x = %.20lf\n", exp_can);
-	minuss = labs(expp - exp_can);
-	printf("Разница Эпсилон: %.20lf\n\n", minuss);
+	printf("канонная exp^x = %.20lf\n\n", exp_can);
+
 
 	return 0;
 }
