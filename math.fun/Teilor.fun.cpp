@@ -137,7 +137,7 @@ int main() {
 				if (fabsf(fel) - eps < 0) break;
 				fel = lel;
 			}
-			lno = summ_ob(lno, log_ob, x, fel, j-1);
+			lno = summ_ob(lno, log_ob, x, fel, j);
 			printf("Обратная ln(1+x): %.16f\n", lno);
 			//
 			printf("Канонический ln(x+1) = %.16f\n\n", ln_can);
