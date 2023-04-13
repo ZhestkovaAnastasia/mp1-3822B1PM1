@@ -162,6 +162,5 @@ int main() {
 		printf("Каноническая exp^x = %.16f\n\n", exp_can);
 		break;
 	}
-	 
 	return 0;
 }
