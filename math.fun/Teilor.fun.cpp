@@ -94,7 +94,7 @@ int main() {
 		fel = x;
 		sinp = summ(sinp, sin_pr, x, fel);
 		sin_can = sin(x);
-		printf("sin(x) = %.16f\n", sinp);
+		printf("sin(x) = %.9f\n", sinp);
 		//
 		lel = 1;
 		for (j = 1; j < 101; j++) {
@@ -103,15 +103,17 @@ int main() {
 			fel = lel;
 		}
 		sino = summ_ob(sino, sin_ob, x, fel, j-1);
-		printf("Обратный sin(x) = %.16f\n", sino);
+		printf("Обратный sin(x) = %.9f\n", sino);
 		//
-		printf("Канонический sin(x) = %.16lf\n\n", sin_can);
+		printf("Канонический sin(x) = %.9lf\n\n", sin_can);
+		printf("Абсолютная погрешность прямой суммы: %.9f\n", fabsf(sin_can - sinp));
+		printf("Абсолютная погрешность обратной суммы: %.9f\n", fabsf(sin_can - sino));
 		break;
 	case 2: //cosx
 		fel = 1;
 		cosp = summ(cosp, cos_pr, x, fel);
 		cos_can = cos(x);
-		printf("cos(x) = %.16f\n", cosp);
+		printf("cos(x) = %.9f\n", cosp);
 		//
 		lel = 1;
 		for (j = 1; j < 100; j++) {
@@ -120,16 +122,18 @@ int main() {
 			fel = lel;
 		}
 		coso = summ_ob(coso, cos_ob, x, fel, j-1);
-		printf("Обратный cos(x) = %.16f\n", coso);
+		printf("Обратный cos(x) = %.9f\n", coso);
 		//
-		printf("Канонический cos(x) = %.16f\n\n", cos_can);
+		printf("Канонический cos(x) = %.9f\n\n", cos_can);
+		printf("Абсолютная погрешность прямой суммы: %.9f\n", fabsf(cos_can - cosp));
+		printf("Абсолютная погрешность обратной суммы: %.9f\n", fabsf(cos_can - coso));
 		break;
 	case 3: //ln(1+x)
 		if ((x > -1) && (x <= 1)) {
 			fel = x;
 			lnp = summ(lnp, log_pr, x, fel);
 			ln_can = log(1 + x);
-			printf("ln(x+1) = %.16f\n", lnp);
+			printf("ln(x+1) = %.9f\n", lnp);
 			//
 			lel = 1;
 			for (j = 1; j < 101; j++) {
@@ -138,9 +142,11 @@ int main() {
 				fel = lel;
 			}
 			lno = summ_ob(lno, log_ob, x, fel, j);
-			printf("Обратная ln(1+x): %.16f\n", lno);
+			printf("Обратная ln(1+x): %.9f\n", lno);
 			//
-			printf("Канонический ln(x+1) = %.16f\n\n", ln_can);
+			printf("Канонический ln(x+1) = %.9f\n\n", ln_can);
+			printf("Абсолютная погрешность прямой суммы: %.9f\n", fabsf(ln_can - lnp));
+			printf("Абсолютная погрешность обратной суммы: %.9f\n", fabsf(ln_can - lno));
 		}
 		else
 			printf("Недопустимые значения для ln(1+x)\n\n");
@@ -149,7 +155,7 @@ int main() {
 		fel = 1;
 		expp = summ(expp, exp_pr, x, fel);
 		exp_can = exp(x);
-		printf("exp^x = %.16f\n", expp);
+		printf("exp^x = %.9f\n", expp);
 		//
 		for (j = 1; j < 101; j++) {
 			lel = exp_pr(x, fel, j);
@@ -157,9 +163,11 @@ int main() {
 			fel = lel;
 		}
 		expo = summ_ob(expo, exp_ob, x, fel, j-1);
-		printf("Обратная exp^x: %.16f\n", expo);
+		printf("Обратная exp^x: %.9f\n", expo);
 		//
-		printf("Каноническая exp^x = %.16f\n\n", exp_can);
+		printf("Каноническая exp^x = %.9f\n\n", exp_can);
+		printf("Абсолютная погрешность прямой суммы: %.9f\n", fabsf(exp_can - expp));
+		printf("Абсолютная погрешность обратной суммы: %.9f\n", fabsf(exp_can - expo));
 		break;
 	}
 	return 0;
