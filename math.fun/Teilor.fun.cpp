@@ -98,9 +98,8 @@ int main() {
 		//
 		lel = 1;
 		for (j = 1; j < 101; j++) {
-			lel = sin_pr(x, fel, j);
 			if (fabsf(fel) - eps < 0) break;
-			fel = lel;
+			fel = sin_pr(x, fel, j);
 		}
 		sino = summ_ob(sino, sin_ob, x, fel, j-1);
 		printf("Обратный sin(x) = %.9f\n", sino);
@@ -117,9 +116,8 @@ int main() {
 		//
 		lel = 1;
 		for (j = 1; j < 100; j++) {
-			lel = cos_pr(x, fel, j);
 			if (fabsf(fel) - eps < 0) break;
-			fel = lel;
+			fel = cos_pr(x, fel, j);
 		}
 		coso = summ_ob(coso, cos_ob, x, fel, j-1);
 		printf("Обратный cos(x) = %.9f\n", coso);
@@ -137,9 +135,8 @@ int main() {
 			//
 			lel = 1;
 			for (j = 1; j < 101; j++) {
-				lel = log_pr(x, fel, j);
 				if (fabsf(fel) - eps < 0) break;
-				fel = lel;
+				fel = log_pr(x, fel, j);
 			}
 			lno = summ_ob(lno, log_ob, x, fel, j);
 			printf("Обратная ln(1+x): %.9f\n", lno);
@@ -157,10 +154,9 @@ int main() {
 		exp_can = exp(x);
 		printf("exp^x = %.9f\n", expp);
 		//
-		for (j = 1; j < 101; j++) {
-			lel = exp_pr(x, fel, j);
+		for (j = 1; j < 101; j++) { 
 			if (fabsf(fel) - eps < 0) break;
-			fel = lel;
+			fel = exp_pr(x, fel, j);;
 		}
 		expo = summ_ob(expo, exp_ob, x, fel, j-1);
 		printf("Обратная exp^x: %.9f\n", expo);
