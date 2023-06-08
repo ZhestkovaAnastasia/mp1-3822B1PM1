@@ -31,9 +31,9 @@ public:
         cout << "\n";
     }
 
-    T Get_Vector(const int index)
+    T Get_Vector(const int ind)
     {
-        return mas[index];
+        return mas[ind];
     }
 
     ~Vector()
