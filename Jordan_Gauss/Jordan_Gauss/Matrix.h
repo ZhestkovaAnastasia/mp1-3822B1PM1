@@ -44,13 +44,13 @@ public:
         return mas[i][j];
     }
 
-    void extended_matrix(Vector<T> b)  //создание расширенной матрицы
+    void extended_matrix(Vector<T> b)  //СЃРѕР·РґР°РЅРёРµ СЂР°СЃС€РёСЂРµРЅРЅРѕР№ РјР°С‚СЂРёС†С‹
     {
         for (int i = 0; i < size; i++)
             mas[i][size] = b.Get_Vector(i);
     }
 
-    void new_value_matrix(int i, int j, T new_val) //присваивание нового значения элементу матрицы new value
+    void new_value_matrix(int i, int j, T new_val) //РїСЂРёСЃРІРѕРёС‚СЊ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ
     {
         mas[i][j] = new_val;
     }
