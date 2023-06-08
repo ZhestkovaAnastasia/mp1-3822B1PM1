@@ -5,7 +5,7 @@
 
 using namespace std;
 
-bool check_null(float x) //проверка на нулевое значение элемента
+bool check_null(float x)
 {
     float eps = 10e-6f;
     if (abs(x) < eps) return true;
@@ -19,7 +19,7 @@ bool check_null(double x)
 }
 
 template <typename T>
-void print_res(int size, Matrix<T> A) //печатание результата
+void print_res(int size, Matrix<T> A)
 {
     T* res = new T[size];
     for (int i = 0; i < size; i++)
@@ -40,14 +40,14 @@ void print_res(int size, Matrix<T> A) //печатание результата
         else
             if (check_null(A.Get_Matrix(i, i)))
             {
-                if (check_null(A.Get_Matrix(i, size))) //если переменная xi является свободной, ей присваивается значение 1
+                if (check_null(A.Get_Matrix(i, size))) //РµСЃР»Рё РїРµСЂРµРјРµРЅРЅР°СЏ xi СЏРІР»СЏРµС‚СЃСЏ СЃРІРѕР±РѕРґРЅРѕР№, РїСЂРёСЃРІР°РёРІР°РµРј Р·РЅР°С‡РµРЅРёРµ 1
                 {
                     res[i] = 1;
-                    cout << "Свободной переменной является x" << i + 1 << endl;
+                    cout << "РЎРІРѕР±РѕРґРЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№ СЏРІР»СЏРµС‚СЃСЏ x" << i + 1 << endl;
                 }
                 else
                 {
-                    cout << "Нет решения, так как матрица несовместна\n";
+                    cout << "РќРµС‚ СЂРµС€РµРЅРёСЏ, С‚Р°Рє РєР°Рє РјР°С‚СЂРёС†Р° РЅРµСЃРѕРІРјРµСЃС‚РЅР°\n";
                     flag = false;
                     break;
                 }
@@ -65,14 +65,14 @@ template <typename T>
 void solver(size_t size)
 {
     Matrix <T>A(size);
-    cout << "Введите матрицу построчно: \n";
+    cout << "Р’РІРµРґРёС‚Рµ РјР°С‚СЂРёС†Сѓ РїРѕСЃС‚СЂРѕС‡РЅРѕ: \n";
     A.Set_Matrix();
 
     Vector <T>b(size);
-    cout << "Введите вектор: \n";
+    cout << "Р’РІРµРґРёС‚Рµ РІРµРєС‚РѕСЂ: \n";
     b.Set_Vector();
 
-    A.extended_matrix(b); //создание расширенной матрицы А
+    A.extended_matrix(b);
 
     int max_index;
     for (int k = 0; k < size; k++)
@@ -85,7 +85,7 @@ void solver(size_t size)
             else max_index = i;
         }
 
-        if (check_null(A.Get_Matrix(max_index, k))) //если макс элемент равен нулю, то переходим на следующий столбец
+        if (check_null(A.Get_Matrix(max_index, k))) //РµСЃР»Рё РјР°РєСЃ СЌР»РµРјРµРЅС‚ СЂР°РІРµРЅ РЅСѓР»СЋ, С‚Рѕ РїРµСЂРµС…РѕРґРёРј РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЃС‚РѕР»Р±РµС†
             break;
 
         T del;
